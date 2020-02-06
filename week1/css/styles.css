@@ -8,27 +8,30 @@
     /* Sizes */
     --small: 10px;
     --diagonal-line: 26.83281573px;
-    --diagonal-line-percentage: 26.5650511771deg;
-    --diagonal-line-percentage-negative: -26.5650511771deg;
     --small-diagonal-line: 26.83281573px
+}
+
+body {
+    margin: 0px;
+    background-color: var(--dark);
 }
 
 .menu {
     width: 100%;
-    height: 100px;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
     background-color: var(--dark);
 }
 
-.course-type-container {
+.menu-type {
     padding: 8px;
-    width: 33%;
-    height: 33%;
-    background-color: var(--dark);
 }
 
 /* The container for multiple letters (a word) */
 
 .word {
+    width: fit-content;
     flex-direction: row;
     display: flex;
     padding-top: 4px;
@@ -38,7 +41,7 @@
 
 /* The container for a letter */
 
-.letter-container {
+.letter {
     height: 48px;
     width: 24px;
     padding-right: 4px;
@@ -86,8 +89,7 @@
     margin-left: 6px;
     background-color: var(--light);
     position: absolute;
-    /* transform: rotate(-23deg); */
-    transform: rotate(var(--diagonal-line-percentage-negative));
+    transform: rotate(-23deg);
 }
 
 /* Diagonal line - bottomleft > topright*/
@@ -98,16 +100,16 @@
     margin-left: 6px;
     background-color: var(--light);
     position: absolute;
-    /* transform: rotate(23deg); */
-    transform: rotate(var(--diagonal-line-percentage));
+    transform: rotate(23deg);
 }
 
 /* Small diagonal line - topleft > bottomright*/
 
 .cs1, .cs4, .cs5, .cs8, .ds2, .ds3, .ds6, .ds7 {
-    height: 12px;
+    height: 17px;
     width: 4px;
-    margin-left: 4px;
+    margin-left: 6px;
+    margin-top: -1px;
     background-color: var(--light);
     position: absolute;
     transform: rotate(-45deg);
@@ -116,9 +118,10 @@
 /* Small diagonal line - bottomleft > topright*/
 
 .cs2, .cs3, .cs6, .cs7, .ds1, .ds4, .ds5, .ds8 {
-    height: 12px;
+    height: 17px;
     width: 4px;
-    margin-left: 4px;
+    margin-left: 6px;
+    margin-top: -1px;
     background-color: var(--light);
     position: absolute;
     transform: rotate(45deg);
@@ -154,11 +157,11 @@
 }
 
 .o5 {
-    margin-top: 20px;
+    margin-top: 24px;
 }
 
 .o6 {
-    margin-top: 20px;
+    margin-top: 24px;
     margin-left: 20px;
 }
 
@@ -255,7 +258,7 @@
 */
 
 .c2 {
-    margin-left: 16px;
+    margin-left: 15px;
 }
 
 .c3 {
@@ -265,7 +268,7 @@
 
 .c4 {
     margin-top: 21px;
-    margin-left: 16px;
+    margin-left: 15px;
 }
 
 /*   
@@ -364,7 +367,7 @@
 */
 
 .ds2 {
-    margin-left: 16px;
+    margin-left: 15px;
 }
 
 .ds3 {
@@ -372,7 +375,7 @@
 }
 
 .ds4 {
-    margin-top: 12px;
+    margin-top: 9px;
     margin-left: 16px
 }
 
@@ -382,16 +385,16 @@
 
 .ds6 {
     margin-top: 24px;
-    margin-left: 16px;
+    margin-left: 15px;
 }
 
 .ds7 {
-    margin-top: 36px;
+    margin-top: 32px;
 }
 
 .ds8 {
-    margin-top: 36px;
-    margin-left: 16px;
+    margin-top: 32px;
+    margin-left: 15px;
 }
 
 /*  
