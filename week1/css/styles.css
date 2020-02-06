@@ -6,7 +6,11 @@
     --red: #ff0000;
     --pink: #f70bb0;
     /* Sizes */
-    --small: 10px
+    --small: 10px;
+    --diagonal-line: 26.83281573px;
+    --diagonal-line-percentage: 26.5650511771deg;
+    --diagonal-line-percentage-negative: -26.5650511771deg;
+    --small-diagonal-line: 26.83281573px
 }
 
 .menu {
@@ -51,7 +55,7 @@
 
 /* Small line */
 
-.os1, .os2, .os3, .os4, .os5, .os6, .os7, .os8, .os9, .os10, .os11, .os12, .os13, .os14 {
+.os1, .os2, .os3, .os4, .os5, .os6, .os7, .os8, .os9, .os10, .os11, .os12, .os13, .os14, .p1, .p2, .p3, .p4, .p5, .p6, .p7, .p8 {
     height: 12px;
     width: 4px;
     background-color: var(--light);
@@ -68,7 +72,7 @@
 
 /* Small horizontal line */
 
-.os1, .os2, .os7, .os8, .os13, .os14 {
+.os1, .os2, .os7, .os8, .os13, .os14, .p2, .p3, .p6, .p7 {
     margin-top: -4px;
     margin-left: 4px;
     transform: rotate(90deg);
@@ -77,28 +81,30 @@
 /* Diagonal line - topleft > bottomright*/
 
 .c1, .c4, .d2, .d3 {
-    height: 24px;
+    height: var(--diagonal-line);
     width: 4px;
-    margin-left: 5px;
+    margin-left: 6px;
     background-color: var(--light);
     position: absolute;
-    transform: rotate(-22deg);
+    /* transform: rotate(-23deg); */
+    transform: rotate(var(--diagonal-line-percentage-negative));
 }
 
 /* Diagonal line - bottomleft > topright*/
 
 .c2, .c3, .d1, .d4 {
-    height: 24px;
+    height: var(--diagonal-line);
     width: 4px;
-    margin-left: 4px;
+    margin-left: 6px;
     background-color: var(--light);
     position: absolute;
-    transform: rotate(22deg);
+    /* transform: rotate(23deg); */
+    transform: rotate(var(--diagonal-line-percentage));
 }
 
 /* Small diagonal line - topleft > bottomright*/
 
-.cs1, .cs4, .cs5, .cs8 {
+.cs1, .cs4, .cs5, .cs8, .ds2, .ds3, .ds6, .ds7 {
     height: 12px;
     width: 4px;
     margin-left: 4px;
@@ -109,16 +115,16 @@
 
 /* Small diagonal line - bottomleft > topright*/
 
-.cs2, .cs3, .cs6, .cs7 {
+.cs2, .cs3, .cs6, .cs7, .ds1, .ds4, .ds5, .ds8 {
     height: 12px;
     width: 4px;
-    margin-left: 5px;
+    margin-left: 4px;
     background-color: var(--light);
     position: absolute;
     transform: rotate(45deg);
 }
 
-/*      1
+/*      1           
      █ █ █ █        
     █       █  
   2 █       █ 3  
@@ -193,44 +199,44 @@
 }
 
 .os6 {
-    margin-left: 20px;
     margin-top: 12px;
+    margin-left: 20px;
 }
 
 .os7 {
-    margin-top: 16px;
+    margin-top: 18px;
 }
 
 .os8 {
+    margin-top: 18px;
     margin-left: 16px;
-    margin-top: 16px;
 }
 
 .os9 {
-    margin-top: 20px;
+    margin-top: 24px;
 }
 
 .os10 {
-    margin-top: 20px;
+    margin-top: 24px;
     margin-left: 20px;
 }
 
 .os11 {
-    margin-top: 32px;
+    margin-top: 36px;
 }
 
 .os12 {
-    margin-top: 32px;
+    margin-top: 36px;
     margin-left: 20px;
 }
 
 .os13 {
-    margin-top: 36px;
+    margin-top: 40px;
 }
 
 .os14 {
+    margin-top: 40px;
     margin-left: 16px;
-    margin-top: 36px;
 }
 
 /*   
@@ -249,16 +255,17 @@
 */
 
 .c2 {
-    margin-left: 15px;
+    margin-left: 16px;
 }
 
 .c3 {
-    margin-top: 24px;
+    margin-left: 5px;
+    margin-top: 21px;
 }
 
 .c4 {
-    margin-top: 24px;
-    margin-left: 15px;
+    margin-top: 21px;
+    margin-left: 16px;
 }
 
 /*   
@@ -278,36 +285,34 @@
       
 */
 
-.cs1 {}
-
 .cs2 {
     margin-left: 16px;
 }
 
 .cs3 {
-    margin-top: 10px
+    margin-top: 12px
 }
 
 .cs4 {
-    margin-top: 10px;
+    margin-top: 12px;
     margin-left: 16px
 }
 
 .cs5 {
-    margin-top: 22px;
+    margin-top: 24px;
 }
 
 .cs6 {
-    margin-top: 22px;
+    margin-top: 24px;
     margin-left: 16px;
 }
 
 .cs7 {
-    margin-top: 32px;
+    margin-top: 36px;
 }
 
 .cs8 {
-    margin-top: 32px;
+    margin-top: 36px;
     margin-left: 16px;
 }
 
@@ -327,16 +332,16 @@
 */
 
 .d2 {
-    margin-left: 15px;
+    margin-left: 16px;
 }
 
 .d3 {
-    margin-top: 20px;
+    margin-top: 22px;
 }
 
 .d4 {
-    margin-top: 20px;
-    margin-left: 15px;
+    margin-top: 22px;
+    margin-left: 16px;
 }
 
 /*   
@@ -358,6 +363,37 @@
       
 */
 
+.ds2 {
+    margin-left: 16px;
+}
+
+.ds3 {
+    margin-top: 12px
+}
+
+.ds4 {
+    margin-top: 12px;
+    margin-left: 16px
+}
+
+.ds5 {
+    margin-top: 24px;
+}
+
+.ds6 {
+    margin-top: 24px;
+    margin-left: 16px;
+}
+
+.ds7 {
+    margin-top: 36px;
+}
+
+.ds8 {
+    margin-top: 36px;
+    margin-left: 16px;
+}
+
 /*  
            
          █ 1       
@@ -375,3 +411,40 @@
     plus (p)
       
 */
+
+.p1 {
+    margin-left: 10px
+}
+
+.p2 {
+    margin-top: 6px
+}
+
+.p3 {
+    margin-top: 6px;
+    margin-left: 16px
+}
+
+.p4 {
+    margin-top: 12px;
+    margin-left: 10px;
+}
+
+.p5 {
+    margin-top: 24px;
+    margin-left: 10px;
+}
+
+.p6 {
+    margin-top: 30px;
+}
+
+.p7 {
+    margin-top: 30px;
+    margin-left: 16px;
+}
+
+.p8 {
+    margin-top: 36px;
+    margin-left: 10px;
+}
