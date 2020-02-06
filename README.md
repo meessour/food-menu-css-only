@@ -10,7 +10,7 @@ A restaurant menu only written with lines
 
 ## The website
 
-![Site Week 1](week1\img\site-week1.jpg)
+![Site Week 1](week-1\img\site-week1.jpg)
 
 ## Table of contents
 
