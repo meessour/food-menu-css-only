@@ -30,3 +30,9 @@ git clone https://github.com/meessour.github.io/css-to-the-rescue-1920.git
 
 ## Licence
 MIT © [Mees Sour](https://github.com/meessour)
+
+
+
+NOTES
+Overlaps playing with lines, interaciton
+https://labs.jensimmons.com/
