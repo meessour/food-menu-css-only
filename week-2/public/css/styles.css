@@ -1,10 +1,7 @@
 :root {
     /* Colors */
     --dark: #000;
-    --course: #F4E408;
     --light: #fffaf0;
-    --red: #ff0000;
-    --pink: #f70bb0;
     /* Sizes */
     --small: 10px;
     --diagonal-line: 26.83281573px;
@@ -14,6 +11,7 @@
 body {
     margin: 0px;
     background-color: var(--dark);
+    color: var(--light);
 }
 
 /* The whole menu (header) with all items */
@@ -23,6 +21,33 @@ body {
     display: flex;
     justify-content: space-between;
     background-color: var(--dark);
+}
+
+.main {
+    width: 100%;
+    height: max-content;
+    display: flex;
+    /* justif-content: space-between; */
+    height: 300px;
+    /* background-color: var(--light); */
+}
+
+/* change point on hover */
+
+label[for=invert-color] {
+    cursor: cell;
+}
+
+/* Target the menu and the lines of letters */
+
+#invert-color:checked~.menu .letter div {
+    background-color: var(--dark);
+}
+
+/* Target the menu and main content */
+
+#invert-color:checked~div {
+    background-color: var(--light);
 }
 
 /* The container of all the items of the menu including title */
@@ -52,6 +77,7 @@ body {
     zoom: 0.75;
     margin-top: 24px;
 }
+
 .menu-type>div:not(:first-child) {
     display: none;
 }
@@ -75,37 +101,33 @@ body {
     padding-right: 4px;
 }
 
-/* Regular line */
+/* Every line of a letter */
 
-div[class^="o"] {
-    height: 24px;
-    width: 4px;
+.letter>div {
     background-color: var(--light);
     position: absolute;
+    border-radius: 5px 5px 5px 5px;
 }
 
 /* Small line */
 
 div[class^="os"], div[class^="p"] {
-    height: 12px;
+    height: 15px;
     width: 4px;
-    background-color: var(--light);
-    position: absolute;
 }
 
-/* Horizontal line*/
+/* Smaller line */
 
-.o1, .o4, .o7 {
-    margin-top: -10px;
-    margin-left: 10px;
-    transform: rotate(90deg);
+div[class^="e"] {
+    height: 7px;
+    width: 4px;
 }
 
 /* Small horizontal line */
 
-.os1, .os2, .os7, .os8, .os13, .os14, .p2, .p3, .p6, .p7 {
-    margin-top: -4px;
-    margin-left: 4px;
+.os1, .os2, .os7, .os8, .os13, .os14, .p2, .p3, .p6, .p7, .e1, .e5 {
+    margin-top: -5px;
+    margin-left: 6px;
     transform: rotate(90deg);
 }
 
@@ -114,10 +136,8 @@ div[class^="os"], div[class^="p"] {
 .c1, .c4, .d2, .d3 {
     height: var(--diagonal-line);
     width: 4px;
-    margin-left: 6px;
-    background-color: var(--light);
-    position: absolute;
-    transform: rotate(-23deg);
+    margin-left: 5px;
+    transform: rotate(-25deg);
 }
 
 /* Diagonal line - bottomleft > topright*/
@@ -126,75 +146,26 @@ div[class^="os"], div[class^="p"] {
     height: var(--diagonal-line);
     width: 4px;
     margin-left: 6px;
-    background-color: var(--light);
-    position: absolute;
-    transform: rotate(23deg);
+    transform: rotate(25deg);
 }
 
 /* Small diagonal line - topleft > bottomright*/
 
-.cs1, .cs4, .cs5, .cs8, .ds2, .ds3, .ds6, .ds7 {
-    height: 17px;
+.cs1, .cs4, .cs5, .cs8, .ds2, .ds3, .ds6, .ds7, .e4 {
+    height: 16px;
     width: 4px;
-    margin-left: 6px;
-    margin-top: -1px;
-    background-color: var(--light);
-    position: absolute;
-    transform: rotate(-45deg);
+    margin-left: 4px;
+    transform: rotate(-40deg);
 }
 
 /* Small diagonal line - bottomleft > topright*/
 
-.cs2, .cs3, .cs6, .cs7, .ds1, .ds4, .ds5, .ds8 {
-    height: 17px;
+.cs2, .cs3, .cs6, .cs7, .ds1, .ds4, .ds5, .ds8, .e2, .e3 {
+    height: 16px;
     width: 4px;
-    margin-left: 6px;
+    margin-left: 4px;
     margin-top: -1px;
-    background-color: var(--light);
-    position: absolute;
-    transform: rotate(45deg);
-}
-
-/*      1           
-     █ █ █ █        
-    █       █  
-  2 █       █ 3  
-    █       █  
-    █   4   █ 
-     █ █ █ █      
-    █       █   
-  5 █       █ 6  
-    █       █   
-    █   7   █  
-     █ █ █ █   
-        
-    Outer (o)
-      
-*/
-
-.o1 {
-    margin-top: -10px;
-}
-
-.o3 {
-    margin-left: 20px;
-}
-
-.o4 {
-    margin-top: 12px;
-}
-
-.o5 {
-    margin-top: 24px;
-}
-
-.o6 {
-    margin-top: 24px;
-    margin-left: 20px;
-}
-
-.o7 {
-    margin-top: 34px;
+    transform: rotate(40deg);
 }
 
 /*    
@@ -218,10 +189,15 @@ div[class^="os"], div[class^="p"] {
 */
 
 .os2 {
-    margin-left: 16px
+    margin-left: 14px;
+}
+
+.os3 {
+    margin-top: 1px;
 }
 
 .os4 {
+    margin-top: 1px;
     margin-left: 20px;
 }
 
@@ -235,39 +211,39 @@ div[class^="os"], div[class^="p"] {
 }
 
 .os7 {
-    margin-top: 18px;
+    margin-top: 16px;
 }
 
 .os8 {
-    margin-top: 18px;
-    margin-left: 16px;
+    margin-top: 16px;
+    margin-left: 14px;
 }
 
 .os9 {
-    margin-top: 24px;
+    margin-top: 21px;
 }
 
 .os10 {
-    margin-top: 24px;
+    margin-top: 21px;
     margin-left: 20px;
 }
 
 .os11 {
-    margin-top: 36px;
+    margin-top: 32px;
 }
 
 .os12 {
-    margin-top: 36px;
+    margin-top: 32px;
     margin-left: 20px;
 }
 
 .os13 {
-    margin-top: 40px;
+    margin-top: 38px;
 }
 
 .os14 {
-    margin-top: 40px;
-    margin-left: 16px;
+    margin-top: 38px;
+    margin-left: 14px;
 }
 
 /*   
@@ -363,7 +339,7 @@ div[class^="os"], div[class^="p"] {
 */
 
 .d2 {
-    margin-left: 16px;
+    margin-left: 15px;
 }
 
 .d3 {
@@ -372,7 +348,7 @@ div[class^="os"], div[class^="p"] {
 
 .d4 {
     margin-top: 22px;
-    margin-left: 16px;
+    margin-left: 15px;
 }
 
 /*   
@@ -395,11 +371,11 @@ div[class^="os"], div[class^="p"] {
 */
 
 .ds2 {
-    margin-left: 15px;
+    margin-left: 16px;
 }
 
 .ds3 {
-    margin-top: 12px
+    margin-top: 9px
 }
 
 .ds4 {
@@ -408,12 +384,12 @@ div[class^="os"], div[class^="p"] {
 }
 
 .ds5 {
-    margin-top: 24px;
+    margin-top: 22px;
 }
 
 .ds6 {
-    margin-top: 24px;
-    margin-left: 15px;
+    margin-top: 22px;
+    margin-left: 16px;
 }
 
 .ds7 {
@@ -422,7 +398,7 @@ div[class^="os"], div[class^="p"] {
 
 .ds8 {
     margin-top: 32px;
-    margin-left: 15px;
+    margin-left: 16px;
 }
 
 /*  
@@ -444,25 +420,26 @@ div[class^="os"], div[class^="p"] {
 */
 
 .p1 {
-    margin-left: 10px
+    margin-left: 10px;
+    margin-top: 1px;
 }
 
 .p2 {
-    margin-top: 6px
+    margin-top: 6px;
 }
 
 .p3 {
     margin-top: 6px;
-    margin-left: 16px
+    margin-left: 16px;
 }
 
 .p4 {
-    margin-top: 12px;
+    margin-top: 11px;
     margin-left: 10px;
 }
 
 .p5 {
-    margin-top: 24px;
+    margin-top: 22px;
     margin-left: 10px;
 }
 
@@ -476,6 +453,52 @@ div[class^="os"], div[class^="p"] {
 }
 
 .p8 {
-    margin-top: 36px;
+    margin-top: 32px;
+    margin-left: 10px;
+}
+
+/*    
+         1  
+        ███        
+               
+          █ 2   
+         █
+        █ █   
+         █ 
+      3 █ █ 4
+
+           
+          
+        ███    
+         5
+
+    extra (e)
+       
+*/ 
+
+.e1 {
+    margin-top: -1px;
+    margin-left: 10px;
+}
+
+.e2 {
+    margin-top: 10px;
+    margin-left: 10px;
+    transform: rotate(50deg);
+}
+
+.e3 {
+    margin-top: 21px;
+    margin-left: 10px;
+}
+
+.e4 {
+    margin-top: 20px;
+    margin-left: 10px;
+    transform: rotate(-50deg);
+}
+
+.e5 {
+    margin-top: 42px;
     margin-left: 10px;
 }
