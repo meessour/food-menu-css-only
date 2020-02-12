@@ -5,7 +5,16 @@
     /* Sizes */
     --small: 10px;
     --diagonal-line: 26.83281573px;
-    --small-diagonal-line: 26.83281573px
+    --small-diagonal-line: 26.83281573px;
+    --letter-container-height: 48px;
+    --letter-container-width: 24px;
+    --letter-container-padding: 4px;
+    --line-width: 4px;
+    --indicator-width: 25%;
+    /* Word lengths */
+    --starter-word-length: 8;
+    --main-word-length: 4;
+    --dessert-word-length: 7;
 }
 
 body {
@@ -23,13 +32,86 @@ body {
     background-color: var(--dark);
 }
 
-.main {
-    width: 100%;
-    height: max-content;
+.indicator-wrapper {
     display: flex;
-    /* justif-content: space-between; */
-    height: 300px;
-    /* background-color: var(--light); */
+}
+
+/* Inspiration: https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_target_tab */
+
+.indicator-wrapper div[id] {
+    width: 0%;
+}
+
+.indicator-wrapper div[id="starters"]:target {
+    margin-left: 1vw;
+    margin-right: 80vw;
+    width: 100%;
+}
+
+.indicator-wrapper div[id="main"]:target {
+    margin-left: 30vw;
+    margin-right: 30vw;
+    width: 100%;
+}
+
+.indicator-wrapper div[id="desserts"]:target {
+    padding-left: 80vw;
+    padding-right: 1vw;
+    width: 100%;
+}
+
+/* Inspiration from: https://stackoverflow.com/a/40788549 */
+
+.indicator-container {
+    width: calc(((var(--letter-container-width) + var(--letter-container-padding)) * var(--starter-word-length)) - var(--letter-container-padding));
+    overflow: hidden;
+    position: relative;
+    height: var(--line-width);
+}
+
+@keyframes slideSmoothLeft {
+    0% {
+        left: 0px;
+    }
+    /* 25% { left:50%; } */
+    50% {
+        left: calc(100% - var(--indicator-width));
+    }
+    /* 75% { left:50%; } */
+    100% {
+        left: 0px;
+    }
+}
+
+@keyframes slideSmoothRight {
+    0% {
+        right: 0px;
+    }
+    /* 25% { left:50%; } */
+    50% {
+        right: calc(100% - var(--indicator-width));
+    }
+    /* 75% { left:50%; } */
+    100% {
+        right: 0px;
+    }
+}
+
+.indicator-1 {
+    animation: slideSmoothLeft;
+}
+
+.indicator-2 {
+    animation: slideSmoothRight;
+}
+
+.indicator-1, .indicator-2 {
+    animation-duration: 2.5s;
+    animation-iteration-count: infinite;
+    position: absolute;
+    width: var(--indicator-width);
+    height: var(--line-width);
+    background: var(--light);
 }
 
 /* change point on hover */
@@ -38,9 +120,9 @@ label[for=invert-color] {
     cursor: cell;
 }
 
-/* Target the menu and the lines of letters */
+/* Target the menu, he lines of letters and the indicators */
 
-#invert-color:checked~.menu .letter div {
+#invert-color:checked~.menu .letter div, #invert-color:checked~.indicator-container div {
     background-color: var(--dark);
 }
 
@@ -96,9 +178,9 @@ label[for=invert-color] {
 /* The container for a letter */
 
 .letter {
-    height: 48px;
-    width: 24px;
-    padding-right: 4px;
+    height: var(--letter-container-height);
+    width: var(--letter-container-width);
+    padding-right: var(--letter-container-padding);
 }
 
 /* Every line of a letter */
@@ -113,14 +195,14 @@ label[for=invert-color] {
 
 div[class^="os"], div[class^="p"] {
     height: 15px;
-    width: 4px;
+    width: var(--line-width);
 }
 
 /* Smaller line */
 
 div[class^="e"] {
     height: 7px;
-    width: 4px;
+    width: var(--line-width);
 }
 
 /* Small horizontal line */
@@ -135,7 +217,7 @@ div[class^="e"] {
 
 .c1, .c4, .d2, .d3 {
     height: var(--diagonal-line);
-    width: 4px;
+    width: var(--line-width);
     margin-left: 5px;
     transform: rotate(-25deg);
 }
@@ -144,7 +226,7 @@ div[class^="e"] {
 
 .c2, .c3, .d1, .d4 {
     height: var(--diagonal-line);
-    width: 4px;
+    width: var(--line-width);
     margin-left: 6px;
     transform: rotate(25deg);
 }
@@ -153,7 +235,7 @@ div[class^="e"] {
 
 .cs1, .cs4, .cs5, .cs8, .ds2, .ds3, .ds6, .ds7, .e4 {
     height: 16px;
-    width: 4px;
+    width: var(--line-width);
     margin-left: 4px;
     transform: rotate(-40deg);
 }
@@ -162,7 +244,7 @@ div[class^="e"] {
 
 .cs2, .cs3, .cs6, .cs7, .ds1, .ds4, .ds5, .ds8, .e2, .e3 {
     height: 16px;
-    width: 4px;
+    width: var(--line-width);
     margin-left: 4px;
     margin-top: -1px;
     transform: rotate(40deg);
@@ -474,7 +556,7 @@ div[class^="e"] {
 
     extra (e)
        
-*/ 
+*/
 
 .e1 {
     margin-top: -1px;
