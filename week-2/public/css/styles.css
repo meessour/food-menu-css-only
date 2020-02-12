@@ -13,7 +13,7 @@
 
 body {
     margin: 0px;
-    /* background-color: var(--dark); */
+    background-color: var(--dark);
 }
 
 /* The whole menu (header) with all items */
@@ -42,7 +42,7 @@ body {
 
 .menu-type:hover>div:not(:first-child) {
     display: flex;
-    transform: rotatex(0deg);
+    /* transform: rotatex(0deg); */
 }
 
 /* The title of the menu */
@@ -51,12 +51,6 @@ body {
     margin-bottom: 8px;
     zoom: 0.75;
     margin-top: 24px;
-
-    transform-style: preserve-3d;
-    transform: rotatex(90deg);
-    /* transform: translate3d(-50%,0%,50%); */
-    transition-property: transform;
-    transition-duration: 1s;
 }
 .menu-type>div:not(:first-child) {
     display: none;
