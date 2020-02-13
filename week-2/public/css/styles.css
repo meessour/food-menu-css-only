@@ -38,33 +38,37 @@ body {
     display: flex;
 }
 
-/* Inspiration: https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_target_tab */
-
-.indicator-wrapper div[id] {
-    display: none;
+@keyframes change-position {
+    from {
+        width: 0px;
+    }
 }
 
-/* div[class="starters-offset-left"]:target { */
+div[id="starters"]:target~div div[class="indicator-1"], div[id="main"]:target~div div[class="indicator-1"], div[id="desserts"]:target~div div[class="indicator-1"] {
+    animation: change-position 1.5s, slideSmoothLeft 3s infinite forwards;
+}
 
-div[id="starters"]:target+div+div+div[class="indicator-container"] {
+div[id="starters"]:target~div div[class="indicator-2"], div[id="main"]:target~div div[class="indicator-2"], div[id="desserts"]:target~div div[class="indicator-2"] {
+    animation: change-position 1.5s, slideSmoothRight 3s infinite forwards;
+}
+
+div[id="starters"]:target~.indicator-container {
     width: var(--eight-letter-word-width);
     margin-left: 12px;
     margin-right: auto;
 }
 
-div[id="main"]:target+div+div[class="indicator-container"] {
+div[id="main"]:target~.indicator-container {
     width: var(--four-letter-word-width);
     margin-left: auto;
     margin-right: auto;
 }
 
-div[id="desserts"]:target+div[class="indicator-container"] {
+div[id="desserts"]:target~.indicator-container {
     width: var(--eight-letter-word-width);
     margin-left: auto;
     margin-right: 12px;
 }
-
-/* Inspiration from: https://stackoverflow.com/a/40788549 */
 
 .indicator-container {
     width: 0%;
@@ -77,11 +81,9 @@ div[id="desserts"]:target+div[class="indicator-container"] {
     0% {
         left: 0px;
     }
-    /* 25% { left:50%; } */
     50% {
         left: calc(100% - var(--indicator-width));
     }
-    /* 75% { left:50%; } */
     100% {
         left: 0px;
     }
@@ -101,17 +103,7 @@ div[id="desserts"]:target+div[class="indicator-container"] {
     }
 }
 
-.indicator-1 {
-    animation: slideSmoothLeft;
-}
-
-.indicator-2 {
-    animation: slideSmoothRight;
-}
-
 .indicator-1, .indicator-2 {
-    animation-duration: 2.5s;
-    animation-iteration-count: infinite;
     position: absolute;
     width: var(--indicator-width);
     height: var(--line-width);
@@ -140,6 +132,37 @@ label[for=invert-color] {
 
 .menu-type {
     padding: 8px;
+}
+
+@keyframes up-and-down {
+    0% {
+        margin-top: 5px;
+    }
+    /* 50% {
+        margin-top: 0px;
+    } */
+    100% {
+        margin-top: -5px;
+    }
+}
+
+@keyframes down-and-up {
+    0% {
+        margin-top: -5px;
+    }
+    /* 50% {
+        margin-top: 0px;
+    } */
+    100% {
+        margin-top: 5px;
+    }
+}
+
+.menu-type:hover .letter:nth-of-type(odd) {
+    animation: up-and-down 1s ease infinite alternate;
+}
+.menu-type:hover .letter:nth-of-type(evem) {
+    animation: down-and-up 1s ease infinite alternate;
 }
 
 /* All the items of the menu including title */
