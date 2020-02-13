@@ -1,7 +1,7 @@
 :root {
     /* Colors */
-    --dark: #000;
-    --light: #fffaf0;
+    --dark: hsl(0, 0%, 0%);
+    --light: hsl(0, 100%, 50%);
     /* Sizes */
     --small: 10px;
     --diagonal-line: 26.83281573px;
@@ -19,8 +19,9 @@
     --four-letter-word-width: calc(((var(--letter-container-width) + var(--letter-container-padding)) * 4) - var(--letter-container-padding));
 }
 
-body {
+html, body {
     margin: 0px;
+    height: 100%;
     background-color: var(--dark);
     color: var(--light);
 }
@@ -134,35 +135,32 @@ label[for=invert-color] {
     padding: 8px;
 }
 
-@keyframes up-and-down {
+@keyframes up-and-down-2 {
     0% {
         margin-top: 5px;
     }
-    /* 50% {
-        margin-top: 0px;
-    } */
-    100% {
-        margin-top: -5px;
+    15% {
+        margin-top: 5px;
     }
-}
-
-@keyframes down-and-up {
-    0% {
-        margin-top: -5px;
-    }
-    /* 50% {
+    32.5% {
         margin-top: 0px;
-    } */
+    }
+    50% {
+        margin-top: 5px;
+    }
+    50.001% {
+        margin-top: 5px;
+    }
     100% {
         margin-top: 5px;
     }
 }
 
-.menu-type:hover .letter:nth-of-type(odd) {
-    animation: up-and-down 1s ease infinite alternate;
-}
-.menu-type:hover .letter:nth-of-type(evem) {
-    animation: down-and-up 1s ease infinite alternate;
+.eight .letter:nth-child(5n+2), .four .letter:nth-child(3n+1) {
+    animation: up-and-down-2;
+    animation-timing-function: normal;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
 }
 
 /* All the items of the menu including title */
