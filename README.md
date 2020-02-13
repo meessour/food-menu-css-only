@@ -4,6 +4,10 @@
 
 [Week 1](https://meessour.github.io/css-to-the-rescue-1920/week-1)
 
+[Week 2](https://meessour.github.io/css-to-the-rescue-1920/week-2)
+
+[Week 3](https://meessour.github.io/css-to-the-rescue-1920/week-3)
+
 ## Summary
 
 A restaurant menu only written with lines
@@ -30,9 +34,3 @@ git clone https://github.com/meessour.github.io/css-to-the-rescue-1920.git
 
 ## Licence
 MIT © [Mees Sour](https://github.com/meessour)
-
-
-
-NOTES
-Overlaps playing with lines, interaciton
-https://labs.jensimmons.com/
