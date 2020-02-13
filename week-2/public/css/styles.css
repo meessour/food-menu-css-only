@@ -15,6 +15,8 @@
     --starter-word-length: 8;
     --main-word-length: 4;
     --dessert-word-length: 7;
+    --eight-letter-word-width: calc(((var(--letter-container-width) + var(--letter-container-padding)) * 8) - var(--letter-container-padding));
+    --four-letter-word-width: calc(((var(--letter-container-width) + var(--letter-container-padding)) * 4) - var(--letter-container-padding));
 }
 
 body {
@@ -39,31 +41,33 @@ body {
 /* Inspiration: https://www.w3schools.com/cssref/tryit.asp?filename=trycss3_target_tab */
 
 .indicator-wrapper div[id] {
-    width: 0%;
+    display: none;
 }
 
-.indicator-wrapper div[id="starters"]:target {
-    margin-left: 1vw;
-    margin-right: 80vw;
-    width: 100%;
+/* div[class="starters-offset-left"]:target { */
+
+div[id="starters"]:target+div+div+div[class="indicator-container"] {
+    width: var(--eight-letter-word-width);
+    margin-left: 12px;
+    margin-right: auto;
 }
 
-.indicator-wrapper div[id="main"]:target {
-    margin-left: 30vw;
-    margin-right: 30vw;
-    width: 100%;
+div[id="main"]:target+div+div[class="indicator-container"] {
+    width: var(--four-letter-word-width);
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.indicator-wrapper div[id="desserts"]:target {
-    padding-left: 80vw;
-    padding-right: 1vw;
-    width: 100%;
+div[id="desserts"]:target+div[class="indicator-container"] {
+    width: var(--eight-letter-word-width);
+    margin-left: auto;
+    margin-right: 12px;
 }
 
 /* Inspiration from: https://stackoverflow.com/a/40788549 */
 
 .indicator-container {
-    width: calc(((var(--letter-container-width) + var(--letter-container-padding)) * var(--starter-word-length)) - var(--letter-container-padding));
+    width: 0%;
     overflow: hidden;
     position: relative;
     height: var(--line-width);
