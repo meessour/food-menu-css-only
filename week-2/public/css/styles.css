@@ -1,7 +1,7 @@
 :root {
     /* Colors */
-    --dark: hsl(0, 0%, 0%);
-    --light: hsl(0, 100%, 50%);
+    --black: hsl(0, 0%, 0%);
+    --red: hsl(0, 100%, 50%);
     /* Sizes */
     --small: 10px;
     --diagonal-line: 26.83281573px;
@@ -19,20 +19,31 @@
     --four-letter-word-width: calc(((var(--letter-container-width) + var(--letter-container-padding)) * 4) - var(--letter-container-padding));
 }
 
-html, body {
+html {
     margin: 0px;
     height: 100%;
-    background-color: var(--dark);
-    color: var(--light);
+    background-color: var(--black);
+    color: var(--red);
+}
+
+body {
+    margin: 0px;
+    height: 100%;
+    background-color: var(--black);
+    color: var(--red);
 }
 
 /* The whole menu (header) with all items */
 
 .menu {
-    width: 100%;
     display: flex;
     justify-content: space-between;
-    background-color: var(--dark);
+}
+
+.menu-container {
+    position: absolute;
+    width: 100%;
+    background-color: var(--red);
 }
 
 .indicator-wrapper {
@@ -45,37 +56,37 @@ html, body {
     }
 }
 
-div[id="starters"]:target~div div[class="indicator-1"], div[id="main"]:target~div div[class="indicator-1"], div[id="desserts"]:target~div div[class="indicator-1"] {
-    animation: change-position 1.5s, slideSmoothLeft 3s infinite forwards;
-}
-
-div[id="starters"]:target~div div[class="indicator-2"], div[id="main"]:target~div div[class="indicator-2"], div[id="desserts"]:target~div div[class="indicator-2"] {
-    animation: change-position 1.5s, slideSmoothRight 3s infinite forwards;
-}
-
-div[id="starters"]:target~.indicator-container {
-    width: var(--eight-letter-word-width);
-    margin-left: 12px;
-    margin-right: auto;
-}
-
-div[id="main"]:target~.indicator-container {
-    width: var(--four-letter-word-width);
-    margin-left: auto;
-    margin-right: auto;
-}
-
-div[id="desserts"]:target~.indicator-container {
-    width: var(--eight-letter-word-width);
-    margin-left: auto;
-    margin-right: 12px;
-}
-
 .indicator-container {
     width: 0%;
     overflow: hidden;
     position: relative;
     height: var(--line-width);
+}
+
+#starters:target .indicator-container {
+    width: var(--eight-letter-word-width);
+    margin-left: 12px;
+    margin-right: auto;
+}
+
+#main:target .indicator-container {
+    width: var(--four-letter-word-width);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#desserts:target .indicator-container {
+    width: var(--eight-letter-word-width);
+    margin-left: auto;
+    margin-right: 12px;
+}
+
+#starters:target .indicator-1, #main:target .indicator-1, #desserts:target .indicator-1 {
+    animation: change-position 3s, slideSmoothLeft 3s infinite forwards;
+}
+
+#starters:target .indicator-2, #main:target .indicator-2, #desserts:target .indicator-2 {
+    animation: change-position 3s, slideSmoothRight 3s infinite forwards;
 }
 
 @keyframes slideSmoothLeft {
@@ -94,11 +105,9 @@ div[id="desserts"]:target~.indicator-container {
     0% {
         right: 0px;
     }
-    /* 25% { left:50%; } */
     50% {
         right: calc(100% - var(--indicator-width));
     }
-    /* 75% { left:50%; } */
     100% {
         right: 0px;
     }
@@ -108,31 +117,34 @@ div[id="desserts"]:target~.indicator-container {
     position: absolute;
     width: var(--indicator-width);
     height: var(--line-width);
-    background: var(--light);
+    background: var(--black);
 }
 
-/* change point on hover */
-
-label[for=invert-color] {
-    cursor: cell;
+.starters .letter:nth-child(7n+1), .desserts .letter:nth-child(7n+1) {
+    animation: up-and-down-1;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
 }
 
-/* Target the menu, he lines of letters and the indicators */
-
-#invert-color:checked~.menu .letter div, #invert-color:checked~.indicator-container div {
-    background-color: var(--dark);
+.starters .letter:nth-child(5n+2), .desserts .letter:nth-child(5n+2) {
+    animation: up-and-down-2;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
 }
 
-/* Target the menu and main content */
-
-#invert-color:checked~div {
-    background-color: var(--light);
+#starters:target .main .letter:nth-child(3n+1), #starters:target .desserts .letter:nth-child(5n+2), #main:target .starters .letter:nth-child(5n+2), #main:target .desserts .letter:nth-child(5n+2), #desserts:target .starters .letter:nth-child(5n+2), #desserts:target .main .letter:nth-child(3n+1) {
+    margin-top: 0;
 }
 
-/* The container of all the items of the menu including title */
-
-.menu-type {
-    padding: 8px;
+@keyframes up-and-down-1 {
+    from, to {
+        margin-top: 5px;
+        -webkit-animation-timing-function: ease-out;
+    }
+    50% {
+        margin-top: -5px;
+        -webkit-animation-timing-function: ease-in;
+    }
 }
 
 @keyframes up-and-down-2 {
@@ -153,11 +165,28 @@ label[for=invert-color] {
     }
 }
 
-.eight .letter:nth-child(5n+2), .four .letter:nth-child(3n+1) {
-    animation: up-and-down-2;
-    animation-timing-function: normal;
-    animation-duration: 1.5s;
-    animation-iteration-count: infinite;
+/* change point on hover */
+
+label[for=invert-color] {
+    cursor: cell;
+}
+
+/* Target the menu, he lines of letters and the indicators */
+
+#invert-color:checked~.menu .letter div, #invert-color:checked~.indicator-container div {
+    background-color: var(--red);
+}
+
+/* Target the menu and main content */
+
+#invert-color:checked~div {
+    background-color: var(--black);
+}
+
+/* The container of all the items of the menu including title */
+
+.menu-type {
+    padding: 8px;
 }
 
 /* All the items of the menu including title */
@@ -208,7 +237,7 @@ label[for=invert-color] {
 /* Every line of a letter */
 
 .letter>div {
-    background-color: var(--light);
+    background-color: var(--black);
     position: absolute;
     border-radius: 5px;
 }
