@@ -1,8 +1,7 @@
 :root {
     /* Colors */
-    --black: hsl(0, 0%, 0%);
-    --red: hsl(0, 100%, 50%);
-    --transparant: transparent;
+    --dark: hsl(0, 0%, 0%);
+    --light: hsl(0, 100%, 50%);
     /* Sizes */
     --small: 10px;
     --diagonal-line: 26.83281573px;
@@ -23,8 +22,8 @@
 html {
     margin: 0px;
     height: 100%;
-    /* background-color: var(--black); */
-    color: var(--red);
+    /* background-color: var(--dark); */
+    color: var(--light);
     background-image: repeating-linear-gradient( rgb(224, 0, 0) 0%, rgb(192, 0, 0) 25%, rgb(224, 0, 0) 50%);
     background-size: 200% 200%;
     animation: moving-down 3s linear infinite;
@@ -35,7 +34,7 @@ body {
     height: 100%;
     background-image: repeating-linear-gradient( red 0%, transparent 25%, red 50%, transparent 75%, red 100%);
     /* filter: invert(100%); */
-    color: var(--red);
+    color: var(--light);
     background-size: 200% 200%;
     animation: moving-up 4s alternate infinite;
 }
@@ -66,13 +65,56 @@ body {
 .menu-container {
     position: relative;
     width: 100%;
-    height: 33%;
+    height: 20%;
+}
+
+.guitar-container {
+    height: fit-content;
+}
+
+.guitar-string {
+    width: 100%;
+    height: 5px;
+    margin: 4px 0;
+    border: solid 2px #000;
+    border-color: transparent transparent #000 transparent;
+    border-radius: 0%/20px 20px 20px 20px;
+}
+
+.guitar-string-container:hover .guitar-string {
+    width: 100%;
+    height: 5px;
+    margin: 4px 0;
+    border: solid 2px #000;
+    
+    animation: strum;
+    animation-duration: 0.1s;
+    animation-iteration-count: 10;
+    animation-timing-function: ease-out;
+}
+
+@keyframes strum {
+    /* up */
+    0% {
+        border-color: #000 transparent transparent;
+        border-radius: 90%/20px 20px 20px 20px;
+    }
+    /* down */
+    50% {
+        border-color: transparent transparent #000 transparent;
+        border-radius: 90%/20px 20px 20px 20px;
+    }
+    /* up */
+    100% {
+        border-color: #000 transparent transparent;
+        border-radius: 90%/20px 20px 20px 20px;
+    }
 }
 
 .main-content {
     position: relative;
     width: 100%;
-    height: 66%;
+    height: 55%;
     display: flex;
     justify-content: space-evenly;
 }
@@ -85,7 +127,7 @@ body {
 .menu-type {
     width: 100%;
 }
- 
+
 #starters:target .main-content-main, #starters:target .main-content-desserts {
     filter: blur(10px);
     animation: fade-away 2s ease-out forwards
@@ -208,7 +250,7 @@ body {
     position: absolute;
     width: var(--indicator-width);
     height: var(--line-width);
-    background: var(--black);
+    background: var(--dark);
 }
 
 .starters .letter:nth-child(7n+1), .desserts .letter:nth-child(7n+1) {
@@ -265,13 +307,13 @@ label[for=invert-color] {
 /* Target the menu, he lines of letters and the indicators */
 
 #invert-color:checked~.menu .letter div, #invert-color:checked~.indicator-container div {
-    background-color: var(--red);
+    background-color: var(--light);
 }
 
 /* Target the menu and main content */
 
 #invert-color:checked~div {
-    background-color: var(--black);
+    background-color: var(--dark);
 }
 
 /* The container of all the items of the menu including title */
@@ -328,7 +370,7 @@ label[for=invert-color] {
 /* Every line of a letter */
 
 .letter>div {
-    background-color: var(--black);
+    background-color: var(--dark);
     position: absolute;
     border-radius: 5px;
 }
