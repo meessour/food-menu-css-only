@@ -2,6 +2,7 @@
     /* Colors */
     --black: hsl(0, 0%, 0%);
     --red: hsl(0, 100%, 50%);
+    --transparant: transparent;
     /* Sizes */
     --small: 10px;
     --diagonal-line: 26.83281573px;
@@ -22,28 +23,118 @@
 html {
     margin: 0px;
     height: 100%;
-    background-color: var(--black);
+    /* background-color: var(--black); */
     color: var(--red);
+    background-image: repeating-linear-gradient( rgb(224, 0, 0) 0%, rgb(192, 0, 0) 25%, rgb(224, 0, 0) 50%);
+    background-size: 200% 200%;
+    animation: moving-down 3s linear infinite;
 }
 
 body {
     margin: 0px;
     height: 100%;
-    background-color: var(--black);
+    background-image: repeating-linear-gradient( red 0%, transparent 25%, red 50%, transparent 75%, red 100%);
+    /* filter: invert(100%); */
     color: var(--red);
+    background-size: 200% 200%;
+    animation: moving-up 4s alternate infinite;
+}
+
+#desserts {
+    height: 100%;
+}
+
+@keyframes moving-up {
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+@keyframes moving-down {
+    100% {
+        background-position: -100% -100%;
+    }
 }
 
 /* The whole menu (header) with all items */
 
 .menu {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }
 
 .menu-container {
-    position: absolute;
+    position: relative;
     width: 100%;
-    background-color: var(--red);
+    height: 33%;
+}
+
+.main-content {
+    position: relative;
+    width: 100%;
+    height: 66%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.main-content-section {
+    align-items: center;
+    width: 100%;
+}
+
+.menu-type {
+    width: 100%;
+}
+ 
+#starters:target .main-content-main, #starters:target .main-content-desserts {
+    filter: blur(10px);
+    animation: fade-away 2s ease-out forwards
+}
+
+#main:target .main-content-starters, #main:target .main-content-desserts {
+    filter: blur(10px);
+    animation: fade-away 2s ease-out forwards
+}
+
+#desserts:target .main-content-starters, #desserts:target .main-content-main {
+    filter: blur(10px);
+    animation: fade-away 2s ease-out forwards
+}
+
+.main-content-item {
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@keyframes fade-away {
+    0% {
+        filter: blur(0px);
+    }
+    30% {
+        filter: blur(3px);
+    }
+    50% {
+        filter: blur(3px);
+    }
+    100% {
+        filter: blur(1000px);
+    }
+}
+
+.stripe {
+    position: absolute;
+    margin-top: 15px;
+    height: 15px;
+    width: 100%;
+    background-color: green;
+    filter: invert(100%);
+}
+
+.stripe2 {
+    height: 7px;
+    width: 100%;
+    background-color: yellow;
 }
 
 .indicator-wrapper {
