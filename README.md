@@ -10,25 +10,25 @@
 
 ## Summary
 
-A restaurant menu only written with lines
+A minimalistic restaurant menu consiting of black lines/bars.
 
-## The website
+## Scope
 
-![Site Week 1](week-1\img\site-week1.jpg)
+Assignment: 
+Responsive restauraunt menu
 
-## Table of contents
+Context: 
+dark-mode and input type (pointer)
+
+Restrictions: 
+When SVG meets CSS: Shapes / Masks / SVG
+Two colours
 
 ## Usage
 
 ```bash
 git clone https://github.com/meessour.github.io/css-to-the-rescue-1920.git
 ```
-
-## Features
-
-## Wishlist
-
-<!-- - [ ] <item> -->
 
 ## Licence
 MIT © [Mees Sour](https://github.com/meessour)
