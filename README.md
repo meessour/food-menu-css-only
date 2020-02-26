@@ -26,8 +26,6 @@ git clone https://github.com/meessour.github.io/css-to-the-rescue-1920.git
 
 ## Features
 
-## External data sources
-
 ## Wishlist
 
 <!-- - [ ] <item> -->
