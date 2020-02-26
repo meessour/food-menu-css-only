@@ -1,0 +1,421 @@
+
+/* The container for multiple letters (a word) */
+
+.word {
+    width: fit-content;
+    flex-direction: row;
+    display: flex;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    padding-left: 4px;
+}
+
+/* The container for a letter */
+
+.letter {
+    height: var(--letter-container-height);
+    width: var(--letter-container-width);
+    padding-right: var(--letter-container-padding);
+}
+
+/* Every line of a letter */
+
+.letter>div {
+    background-color: var(--dark);
+    position: absolute;
+    border-radius: 5px;
+}
+
+/* Small line */
+
+div[class^="os"], div[class^="p"] {
+    height: 15px;
+    width: var(--line-width);
+}
+
+/* Smaller line */
+
+div[class^="e"] {
+    height: 7px;
+    width: var(--line-width);
+}
+
+/* Small horizontal line */
+
+.os1, .os2, .os7, .os8, .os13, .os14, .p2, .p3, .p6, .p7, .e1, .e5 {
+    margin-top: -5px;
+    margin-left: 6px;
+    transform: rotate(90deg);
+}
+
+/* Diagonal line - topleft > bottomright*/
+
+.c1, .c4, .d2, .d3 {
+    height: var(--diagonal-line);
+    width: var(--line-width);
+    margin-left: 5px;
+    transform: rotate(-25deg);
+}
+
+/* Diagonal line - bottomleft > topright*/
+
+.c2, .c3, .d1, .d4 {
+    height: var(--diagonal-line);
+    width: var(--line-width);
+    margin-left: 6px;
+    transform: rotate(25deg);
+}
+
+/* Small diagonal line - topleft > bottomright*/
+
+.cs1, .cs4, .cs5, .cs8, .ds2, .ds3, .ds6, .ds7, .e4 {
+    height: 16px;
+    width: var(--line-width);
+    margin-left: 4px;
+    transform: rotate(-40deg);
+}
+
+/* Small diagonal line - bottomleft > topright*/
+
+.cs2, .cs3, .cs6, .cs7, .ds1, .ds4, .ds5, .ds8, .e2, .e3 {
+    height: 16px;
+    width: var(--line-width);
+    margin-left: 4px;
+    margin-top: -1px;
+    transform: rotate(40deg);
+}
+
+/*    
+       1   2
+      ███ ███        
+    █         █  
+  3 █         █ 4 
+
+  5 █         █ 6
+    █  7   8  █ 
+      ███ ███      
+    █         █   
+  9 █         █ 10 
+  
+ 11 █         █ 12
+    █  13 14  █  
+      ███ ███ 
+        
+    Outer-small (os)
+      
+*/
+
+.os2 {
+    margin-left: 14px;
+}
+
+.os3 {
+    margin-top: 1px;
+}
+
+.os4 {
+    margin-top: 1px;
+    margin-left: 20px;
+}
+
+.os5 {
+    margin-top: 12px;
+}
+
+.os6 {
+    margin-top: 12px;
+    margin-left: 20px;
+}
+
+.os7 {
+    margin-top: 16px;
+}
+
+.os8 {
+    margin-top: 16px;
+    margin-left: 14px;
+}
+
+.os9 {
+    margin-top: 21px;
+}
+
+.os10 {
+    margin-top: 21px;
+    margin-left: 20px;
+}
+
+.os11 {
+    margin-top: 32px;
+}
+
+.os12 {
+    margin-top: 32px;
+    margin-left: 20px;
+}
+
+.os13 {
+    margin-top: 38px;
+}
+
+.os14 {
+    margin-top: 38px;
+    margin-left: 14px;
+}
+
+/*   
+    █     █      
+     █   █
+   1  █ █  2
+       █
+
+       █      
+   3  █ █  4
+     █   █       
+    █     █ 
+    
+    Cross (c)
+      
+*/
+
+.c2 {
+    margin-left: 15px;
+}
+
+.c3 {
+    margin-left: 5px;
+    margin-top: 21px;
+}
+
+.c4 {
+    margin-top: 21px;
+    margin-left: 15px;
+}
+
+/*   
+    █         █ 
+   1  █     █  2
+        █ █ 
+   3  █     █  4
+    █         █
+      
+    █         █ 
+   5  █     █  6
+        █ █ 
+   7  █     █  8
+    █         █
+    
+    Cross-small (cs)
+      
+*/
+
+.cs2 {
+    margin-left: 16px;
+}
+
+.cs3 {
+    margin-top: 12px
+}
+
+.cs4 {
+    margin-top: 12px;
+    margin-left: 16px
+}
+
+.cs5 {
+    margin-top: 24px;
+}
+
+.cs6 {
+    margin-top: 24px;
+    margin-left: 16px;
+}
+
+.cs7 {
+    margin-top: 36px;
+}
+
+.cs8 {
+    margin-top: 36px;
+    margin-left: 16px;
+}
+
+/*   
+       █      
+      █ █ 
+     █   █       
+    █     █
+
+    █     █      
+     █   █
+      █ █      
+       █
+    
+    Diamond (d)
+      
+*/
+
+.d2 {
+    margin-left: 15px;
+}
+
+.d3 {
+    margin-top: 22px;
+}
+
+.d4 {
+    margin-top: 22px;
+    margin-left: 15px;
+}
+
+/*   
+        █      
+  1   █   █   2
+    █       █
+    █       █ 
+  3   █   █   4    
+        █
+
+        █      
+  5   █   █   6
+    █       █
+    █       █ 
+  7   █   █   8    
+        █
+    
+    Diamond-small (ds)
+      
+*/
+
+.ds2 {
+    margin-left: 16px;
+}
+
+.ds3 {
+    margin-top: 9px
+}
+
+.ds4 {
+    margin-top: 9px;
+    margin-left: 16px
+}
+
+.ds5 {
+    margin-top: 22px;
+}
+
+.ds6 {
+    margin-top: 22px;
+    margin-left: 16px;
+}
+
+.ds7 {
+    margin-top: 32px;
+}
+
+.ds8 {
+    margin-top: 32px;
+    margin-left: 16px;
+}
+
+/*  
+           
+         █ 1       
+         █         
+   2 █ █   █ █ 3
+         █         
+         █ 4   
+
+         █ 5      
+         █         
+   6 █ █   █ █ 7
+         █         
+         █ 8   
+
+    plus (p)
+      
+*/
+
+.p1 {
+    margin-left: 10px;
+    margin-top: 1px;
+}
+
+.p2 {
+    margin-top: 6px;
+}
+
+.p3 {
+    margin-top: 6px;
+    margin-left: 16px;
+}
+
+.p4 {
+    margin-top: 11px;
+    margin-left: 10px;
+}
+
+.p5 {
+    margin-top: 22px;
+    margin-left: 10px;
+}
+
+.p6 {
+    margin-top: 30px;
+}
+
+.p7 {
+    margin-top: 30px;
+    margin-left: 16px;
+}
+
+.p8 {
+    margin-top: 32px;
+    margin-left: 10px;
+}
+
+/*    
+         1  
+        ███        
+               
+          █ 2   
+         █
+        █ █   
+         █ 
+      3 █ █ 4
+
+           
+          
+        ███    
+         5
+
+    extra (e)
+       
+*/
+
+.e1 {
+    margin-top: -1px;
+    margin-left: 10px;
+}
+
+.e2 {
+    margin-top: 10px;
+    margin-left: 10px;
+    transform: rotate(50deg);
+}
+
+.e3 {
+    margin-top: 21px;
+    margin-left: 10px;
+}
+
+.e4 {
+    margin-top: 20px;
+    margin-left: 10px;
+    transform: rotate(-50deg);
+}
+
+.e5 {
+    margin-top: 42px;
+    margin-left: 10px;
+}

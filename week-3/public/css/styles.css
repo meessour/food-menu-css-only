@@ -1,3 +1,5 @@
+/* Default global values */
+
 :root {
     /* Colors */
     --dark: hsl(0, 0%, 0%);
@@ -32,6 +34,7 @@ html {
 body {
     margin: 0px;
     height: 100%;
+    overflow: hidden;
     background-image: repeating-linear-gradient( red 0%, transparent 25%, red 50%, transparent 75%, red 100%);
     /* filter: invert(100%); */
     color: var(--light);
@@ -55,8 +58,6 @@ body {
     }
 }
 
-/* The whole menu (header) with all items */
-
 .menu {
     display: flex;
     justify-content: space-evenly;
@@ -69,7 +70,7 @@ body {
 }
 
 .guitar-container {
-    height: 15%;
+    min-height: 15%;
 }
 
 .guitar-string {
@@ -86,29 +87,20 @@ body {
     height: 5px;
     margin: 4px 0;
     border: solid 2px #000;
-    
-    animation: strum;
-    animation-duration: 0.1s;
-    animation-iteration-count: 10;
-    animation-timing-function: ease-out;
+    animation: strum 0.1s 10, strum 0.2s 5 1s, strum 0.3s 3 2s, strum 0.5s 3 2.9s ease-out forwards;
+    border-radius: 90%/20px 20px 20px 20px;
 }
 
 /* Strum is the animation when hovering over the guitar */
+
 @keyframes strum {
     /* up */
-    0% {
+    to, from {
         border-color: #000 transparent transparent;
-        border-radius: 90%/20px 20px 20px 20px;
     }
     /* down */
     50% {
-        border-color: transparent transparent #000 transparent;
-        border-radius: 90%/20px 20px 20px 20px;
-    }
-    /* up */
-    100% {
-        border-color: #000 transparent transparent;
-        border-radius: 90%/20px 20px 20px 20px;
+        border-color: transparent transparent #000;
     }
 }
 
@@ -122,10 +114,14 @@ body {
 }
 
 .main-content-section {
-    /* visibility: hidden; */
     align-items: center;
     width: 100%;
     height: fit-content;
+}
+
+#starters:not(:target) .main-content-main, #starters:not(:target) .main-content-desserts, #main:not(:target) .main-content-starters, #main:not(:target) .main-content-desserts, #desserts:not(:target) .main-content-starters, #desserts:not(:target) .main-content-main {
+    filter: blur(10px);
+    animation: fade-away 2s ease-out forwards
 }
 
 .menu-type {
@@ -133,10 +129,11 @@ body {
 }
 
 #starters:target .main-content-starters, #main:target .main-content-main, #desserts:target .main-content-desserts {
-    visibility: visible;
+    opacity: 1;
+    animation: fade-in 2s ease-out forwards
 }
 
-#starters:target .main-content-main, #starters:target .main-content-desserts {
+/* #starters:target .main-content-main, #starters:target .main-content-desserts {
     filter: blur(10px);
     animation: fade-away 2s ease-out forwards
 }
@@ -149,12 +146,21 @@ body {
 #desserts:target .main-content-starters, #desserts:target .main-content-main {
     filter: blur(10px);
     animation: fade-away 2s ease-out forwards
-}
+} */
 
 .main-content-item {
     width: 100%;
     margin-right: auto;
     margin-left: auto;
+}
+
+@keyframes fade-in {
+    0% {
+        filter: blur(1000px);
+    }
+    100% {
+        filter: blur(0px);
+    }
 }
 
 @keyframes fade-away {
@@ -206,19 +212,19 @@ body {
 }
 
 #starters:target .indicator-container {
-    width: var(--eight-letter-word-width);
+    width: 33%;
     margin-left: 12px;
     margin-right: auto;
 }
 
 #main:target .indicator-container {
-    width: var(--four-letter-word-width);
+    width: 33%;
     margin-left: auto;
     margin-right: auto;
 }
 
 #desserts:target .indicator-container {
-    width: var(--eight-letter-word-width);
+    width: 33%;
     margin-left: auto;
     margin-right: 12px;
 }
@@ -262,67 +268,67 @@ body {
     background: var(--dark);
 }
 
-.starters .letter:nth-child(7n+1), .desserts .letter:nth-child(7n+1) {
-    animation: up-and-down-1;
-    animation-duration: 1.5s;
-    animation-iteration-count: infinite;
+/* Show bounce animation when the menu item is targeted */
+
+#starters:target .starters .letter, #main:target .main .letter, #desserts:target .desserts .letter {
+    animation: bounce 1.5s infinite;
 }
 
-.starters .letter:nth-child(5n+2), .desserts .letter:nth-child(5n+2) {
-    animation: up-and-down-2;
-    animation-duration: 1.5s;
-    animation-iteration-count: infinite;
+/* A delay added to the second letter of the word */
+
+#starters:target .starters .letter:nth-child(2), #main:target .main .letter:nth-child(2), #desserts:target .desserts .letter:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+/* A delay added to the third letter of the word */
+
+#starters:target .starters .letter:nth-child(3), #main:target .main .letter:nth-child(3), #desserts:target .desserts .letter:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+/* A delay added to the fourth letter of the word */
+
+#starters:target .starters .letter:nth-child(4), #main:target .main .letter:nth-child(4), #desserts:target .desserts .letter:nth-child(4) {
+    animation-delay: 0.3s;
+}
+
+/* A delay added to the fifth letter of the word */
+
+#starters:target .starters .letter:nth-child(5), #main:target .main .letter:nth-child(5), #desserts:target .desserts .letter:nth-child(5) {
+    animation-delay: 0.4s;
+}
+
+/* A delay added to the sixth letter of the word */
+
+#starters:target .starters .letter:nth-child(6), #main:target .main .letter:nth-child(6), #desserts:target .desserts .letter:nth-child(6) {
+    animation-delay: 0.5s;
+}
+
+/* A delay added to the seventh letter of the word */
+
+#starters:target .starters .letter:nth-child(7), #main:target .main .letter:nth-child(7), #desserts:target .desserts .letter:nth-child(7) {
+    animation-delay: 0.6s;
+}
+
+/* A delay added to the eighth letter of the word */
+
+#starters:target .starters .letter:nth-child(8), #main:target .main .letter:nth-child(8), #desserts:target .desserts .letter:nth-child(8) {
+    animation-delay: 0.7s;
 }
 
 #starters:target .main .letter:nth-child(3n+1), #starters:target .desserts .letter:nth-child(5n+2), #main:target .starters .letter:nth-child(5n+2), #main:target .desserts .letter:nth-child(5n+2), #desserts:target .starters .letter:nth-child(5n+2), #desserts:target .main .letter:nth-child(3n+1) {
     margin-top: 0;
 }
 
-@keyframes up-and-down-1 {
+@keyframes bounce {
     from, to {
-        margin-top: 5px;
+        margin-top: 0px;
         -webkit-animation-timing-function: ease-out;
     }
     50% {
-        margin-top: -5px;
+        margin-top: -10px;
         -webkit-animation-timing-function: ease-in;
     }
-}
-
-@keyframes up-and-down-2 {
-    0% {
-        margin-top: 5px;
-    }
-    15% {
-        margin-top: 5px;
-    }
-    32.5% {
-        margin-top: 0px;
-    }
-    50% {
-        margin-top: 5px;
-    }
-    100% {
-        margin-top: 5px;
-    }
-}
-
-/* change point on hover */
-
-label[for=invert-color] {
-    cursor: cell;
-}
-
-/* Target the menu, he lines of letters and the indicators */
-
-#invert-color:checked~.menu .letter div, #invert-color:checked~.indicator-container div {
-    background-color: var(--light);
-}
-
-/* Target the menu and main content */
-
-#invert-color:checked~div {
-    background-color: var(--dark);
 }
 
 /* The container of all the items of the menu including title */
@@ -355,425 +361,4 @@ label[for=invert-color] {
 
 .menu-type>div:not(:first-child) {
     display: none;
-}
-
-/* The container for multiple letters (a word) */
-
-.word {
-    width: fit-content;
-    flex-direction: row;
-    display: flex;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    padding-left: 4px;
-}
-
-/* The container for a letter */
-
-.letter {
-    height: var(--letter-container-height);
-    width: var(--letter-container-width);
-    padding-right: var(--letter-container-padding);
-}
-
-/* Every line of a letter */
-
-.letter>div {
-    background-color: var(--dark);
-    position: absolute;
-    border-radius: 5px;
-}
-
-/* Small line */
-
-div[class^="os"], div[class^="p"] {
-    height: 15px;
-    width: var(--line-width);
-}
-
-/* Smaller line */
-
-div[class^="e"] {
-    height: 7px;
-    width: var(--line-width);
-}
-
-/* Small horizontal line */
-
-.os1, .os2, .os7, .os8, .os13, .os14, .p2, .p3, .p6, .p7, .e1, .e5 {
-    margin-top: -5px;
-    margin-left: 6px;
-    transform: rotate(90deg);
-}
-
-/* Diagonal line - topleft > bottomright*/
-
-.c1, .c4, .d2, .d3 {
-    height: var(--diagonal-line);
-    width: var(--line-width);
-    margin-left: 5px;
-    transform: rotate(-25deg);
-}
-
-/* Diagonal line - bottomleft > topright*/
-
-.c2, .c3, .d1, .d4 {
-    height: var(--diagonal-line);
-    width: var(--line-width);
-    margin-left: 6px;
-    transform: rotate(25deg);
-}
-
-/* Small diagonal line - topleft > bottomright*/
-
-.cs1, .cs4, .cs5, .cs8, .ds2, .ds3, .ds6, .ds7, .e4 {
-    height: 16px;
-    width: var(--line-width);
-    margin-left: 4px;
-    transform: rotate(-40deg);
-}
-
-/* Small diagonal line - bottomleft > topright*/
-
-.cs2, .cs3, .cs6, .cs7, .ds1, .ds4, .ds5, .ds8, .e2, .e3 {
-    height: 16px;
-    width: var(--line-width);
-    margin-left: 4px;
-    margin-top: -1px;
-    transform: rotate(40deg);
-}
-
-/*    
-       1   2
-      ███ ███        
-    █         █  
-  3 █         █ 4 
-
-  5 █         █ 6
-    █  7   8  █ 
-      ███ ███      
-    █         █   
-  9 █         █ 10 
-  
- 11 █         █ 12
-    █  13 14  █  
-      ███ ███ 
-        
-    Outer-small (os)
-      
-*/
-
-.os2 {
-    margin-left: 14px;
-}
-
-.os3 {
-    margin-top: 1px;
-}
-
-.os4 {
-    margin-top: 1px;
-    margin-left: 20px;
-}
-
-.os5 {
-    margin-top: 12px;
-}
-
-.os6 {
-    margin-top: 12px;
-    margin-left: 20px;
-}
-
-.os7 {
-    margin-top: 16px;
-}
-
-.os8 {
-    margin-top: 16px;
-    margin-left: 14px;
-}
-
-.os9 {
-    margin-top: 21px;
-}
-
-.os10 {
-    margin-top: 21px;
-    margin-left: 20px;
-}
-
-.os11 {
-    margin-top: 32px;
-}
-
-.os12 {
-    margin-top: 32px;
-    margin-left: 20px;
-}
-
-.os13 {
-    margin-top: 38px;
-}
-
-.os14 {
-    margin-top: 38px;
-    margin-left: 14px;
-}
-
-/*   
-    █     █      
-     █   █
-   1  █ █  2
-       █
-
-       █      
-   3  █ █  4
-     █   █       
-    █     █ 
-    
-    Cross (c)
-      
-*/
-
-.c2 {
-    margin-left: 15px;
-}
-
-.c3 {
-    margin-left: 5px;
-    margin-top: 21px;
-}
-
-.c4 {
-    margin-top: 21px;
-    margin-left: 15px;
-}
-
-/*   
-    █         █ 
-   1  █     █  2
-        █ █ 
-   3  █     █  4
-    █         █
-      
-    █         █ 
-   5  █     █  6
-        █ █ 
-   7  █     █  8
-    █         █
-    
-    Cross-small (cs)
-      
-*/
-
-.cs2 {
-    margin-left: 16px;
-}
-
-.cs3 {
-    margin-top: 12px
-}
-
-.cs4 {
-    margin-top: 12px;
-    margin-left: 16px
-}
-
-.cs5 {
-    margin-top: 24px;
-}
-
-.cs6 {
-    margin-top: 24px;
-    margin-left: 16px;
-}
-
-.cs7 {
-    margin-top: 36px;
-}
-
-.cs8 {
-    margin-top: 36px;
-    margin-left: 16px;
-}
-
-/*   
-       █      
-      █ █ 
-     █   █       
-    █     █
-
-    █     █      
-     █   █
-      █ █      
-       █
-    
-    Diamond (d)
-      
-*/
-
-.d2 {
-    margin-left: 15px;
-}
-
-.d3 {
-    margin-top: 22px;
-}
-
-.d4 {
-    margin-top: 22px;
-    margin-left: 15px;
-}
-
-/*   
-        █      
-  1   █   █   2
-    █       █
-    █       █ 
-  3   █   █   4    
-        █
-
-        █      
-  5   █   █   6
-    █       █
-    █       █ 
-  7   █   █   8    
-        █
-    
-    Diamond-small (ds)
-      
-*/
-
-.ds2 {
-    margin-left: 16px;
-}
-
-.ds3 {
-    margin-top: 9px
-}
-
-.ds4 {
-    margin-top: 9px;
-    margin-left: 16px
-}
-
-.ds5 {
-    margin-top: 22px;
-}
-
-.ds6 {
-    margin-top: 22px;
-    margin-left: 16px;
-}
-
-.ds7 {
-    margin-top: 32px;
-}
-
-.ds8 {
-    margin-top: 32px;
-    margin-left: 16px;
-}
-
-/*  
-           
-         █ 1       
-         █         
-   2 █ █   █ █ 3
-         █         
-         █ 4   
-
-         █ 5      
-         █         
-   6 █ █   █ █ 7
-         █         
-         █ 8   
-
-    plus (p)
-      
-*/
-
-.p1 {
-    margin-left: 10px;
-    margin-top: 1px;
-}
-
-.p2 {
-    margin-top: 6px;
-}
-
-.p3 {
-    margin-top: 6px;
-    margin-left: 16px;
-}
-
-.p4 {
-    margin-top: 11px;
-    margin-left: 10px;
-}
-
-.p5 {
-    margin-top: 22px;
-    margin-left: 10px;
-}
-
-.p6 {
-    margin-top: 30px;
-}
-
-.p7 {
-    margin-top: 30px;
-    margin-left: 16px;
-}
-
-.p8 {
-    margin-top: 32px;
-    margin-left: 10px;
-}
-
-/*    
-         1  
-        ███        
-               
-          █ 2   
-         █
-        █ █   
-         █ 
-      3 █ █ 4
-
-           
-          
-        ███    
-         5
-
-    extra (e)
-       
-*/
-
-.e1 {
-    margin-top: -1px;
-    margin-left: 10px;
-}
-
-.e2 {
-    margin-top: 10px;
-    margin-left: 10px;
-    transform: rotate(50deg);
-}
-
-.e3 {
-    margin-top: 21px;
-    margin-left: 10px;
-}
-
-.e4 {
-    margin-top: 20px;
-    margin-left: 10px;
-    transform: rotate(-50deg);
-}
-
-.e5 {
-    margin-top: 42px;
-    margin-left: 10px;
 }

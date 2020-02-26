@@ -1,0 +1,17 @@
+input[type='checkbox'] {
+    display: none;
+}
+
+
+/* change point on hover */
+
+label[for=invert-color] {
+    cursor: pointer;
+}
+
+.dark-mode-label {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    zoom: 0.3;
+}
