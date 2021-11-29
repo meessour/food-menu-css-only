@@ -2,11 +2,11 @@
 
 ## Live Demo's
 
-[Week 1](https://meessour.github.io/css-to-the-rescue-1920/week-1)
+[Week 1](https://meessour.github.io/FoodMenu-css-only/week-1)
 
-[Week 2](https://meessour.github.io/css-to-the-rescue-1920/week-2)
+[Week 2](https://meessour.github.io/FoodMenu-css-only/week-2)
 
-[Week 3](https://meessour.github.io/css-to-the-rescue-1920/week-3)
+[Week 3](https://meessour.github.io/FoodMenu-css-only/week-3)
 
 ## Summary
 
@@ -27,7 +27,7 @@ Two colours
 ## Usage
 
 ```bash
-git clone https://github.com/meessour.github.io/css-to-the-rescue-1920.git
+git clone https://github.com/meessour.github.io/FoodMenu-css-only.git
 ```
 
 ## Licence
